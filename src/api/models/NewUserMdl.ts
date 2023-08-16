@@ -10,7 +10,7 @@ const newUserSchema: Schema = new Schema(
 );
 
 interface InewUser extends Document {
-username: string
+  username: string
   mail: string;
   password: string;
 }
