@@ -4,6 +4,7 @@ const userSchema: Schema = new Schema(
   {
     mail: { type: String, required: true },
     password: { type: String, required: true },
+    username: {type:String, required:true}
   },
   { collection: "user" }
 );
@@ -11,6 +12,7 @@ const userSchema: Schema = new Schema(
 interface IUser extends Document {
   mail: string;
   password: string;
+  username: string;
 }
 
 const User: Model<IUser> = mongoose.model<IUser>("user", userSchema);
