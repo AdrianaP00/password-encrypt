@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connect } from "./utils/db";
+import User from "./api/models/UserMdl";
 
 dotenv.config();
 
@@ -10,7 +11,6 @@ const PORT = process.env.PORT || 3000;
 connect();
 
 server.use(express.json());
-// server.use("/newuser", allCourses)
-// server.use("/user", User)
+ server.use("/user", User)
 
 server.listen(PORT, () => console.log(`Listening at port: ${PORT}`));
