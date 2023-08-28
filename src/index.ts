@@ -1,16 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connect } from "./utils/db";
-import User from "./api/models/UserMdl";
+import userRouter from "./api/routes/UserRoutes";
 
 dotenv.config();
 
-const server = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 connect();
 
-server.use(express.json());
- server.use("/user", User)
+app.use(express.json());
+app.use("/user", userRouter)
 
-server.listen(PORT, () => console.log(`Listening at port: ${PORT}`));
+app.listen(PORT, () => console.log(`Listening at port: ${PORT}`));

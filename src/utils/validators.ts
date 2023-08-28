@@ -1,4 +1,11 @@
 import User from "../api/models/UserMdl";
+import jwt from "jsonwebtoken";
+
+const fixedSecretKey = "mysecretkey";
+export function generateSign(userId: string, email: string): string {
+  const token = jwt.sign({ userId, email }, fixedSecretKey, { expiresIn: "1h" });
+  return token;
+}
 
 const validateEmail = (email: string): boolean => {
   const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
